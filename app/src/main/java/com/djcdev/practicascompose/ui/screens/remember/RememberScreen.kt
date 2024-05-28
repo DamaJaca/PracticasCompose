@@ -1,11 +1,10 @@
-package com.djcdev.practicascompose.ui.screens.login
+package com.djcdev.practicascompose.ui.screens.remember
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,8 +14,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
@@ -29,21 +26,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.HeadderIconIberdrola
 import com.djcdev.practicascompose.ui.navigation.Home
 import com.djcdev.practicascompose.ui.navigation.Login
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import com.djcdev.practicascompose.ui.screens.login.RelativeLayoutComponent
 
 @Composable
 fun RememberScreen(navController: NavController){

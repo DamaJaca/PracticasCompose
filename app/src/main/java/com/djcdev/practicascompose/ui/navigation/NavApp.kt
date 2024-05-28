@@ -6,9 +6,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.djcdev.practicascompose.ui.screens.home.HomeScreen
 import com.djcdev.practicascompose.ui.screens.login.LoginScreen
-import com.djcdev.practicascompose.ui.screens.login.RememberScreen
-import com.djcdev.practicascompose.ui.screens.login.SignUpScreen
-import javax.inject.Inject
+import com.djcdev.practicascompose.ui.screens.remember.RememberScreen
+import com.djcdev.practicascompose.ui.screens.signup.SignUpScreen
 
 
 @Composable
