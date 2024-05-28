@@ -57,6 +57,8 @@ android {
 
 dependencies {
 
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+
     //KotlinSerialization-Navigation
     val nav_version = "2.8.0-beta01"
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0-RC")

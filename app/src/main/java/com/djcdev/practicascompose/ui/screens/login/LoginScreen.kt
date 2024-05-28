@@ -122,11 +122,11 @@ fun LoginScreen(navController: NavController) {
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
 
-//                    if (userModel!!.user==null && userModel!!.pass==null){
+                    if (userModel!!.user==null && userModel!!.pass==null){
                         runBlocking { saveUser("","",context)
                         userModel = getUser(context).first()
                         }
-//                    }
+                    }
 
 
                     if (userModel!!.user == "" && userModel!!.pass == "") {
@@ -152,7 +152,7 @@ fun LoginScreen(navController: NavController) {
 
 }
 
-private suspend fun saveUser(user: String, pass: String, context: Context) {
+suspend fun saveUser(user: String, pass: String, context: Context) {
     context.dataStore.edit { preferences ->
         preferences[stringPreferencesKey("user")] = user
         preferences[stringPreferencesKey("pass")] = pass
