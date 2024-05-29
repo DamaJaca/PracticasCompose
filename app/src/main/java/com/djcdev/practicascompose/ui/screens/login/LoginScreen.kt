@@ -16,13 +16,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -61,6 +59,8 @@ import com.djcdev.practicascompose.domain.model.UserModel
 import com.djcdev.practicascompose.domain.model.exceptions.FailedLogin
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.HeadderIconIberdrola
+import com.djcdev.practicascompose.ui.companioncomposables.loginregister.RelativeLayoutComponent
+import com.djcdev.practicascompose.ui.companioncomposables.loginregister.ShowErrorMessage
 import com.djcdev.practicascompose.ui.navigation.Home
 import com.djcdev.practicascompose.ui.navigation.Remember
 import com.djcdev.practicascompose.ui.navigation.Signup
@@ -272,38 +272,6 @@ fun BottomContentLogin(navController: NavController, modifier: Modifier = Modifi
 }
 
 
-@Composable
-fun ShowErrorMessage(fail: FailedLogin?, onDimiss: () -> Unit) {
-
-    AlertDialog(
-        onDismissRequest = { onDimiss() },
-        title = {
-            Text(text = "Error!")
-        },
-        text = {
-            Text(
-                text = when (fail) {
-                    FailedLogin.InvalidUser -> "El usuario que está intentando ingresar no existe"
-                    FailedLogin.InvalidPass -> "Usuario o Contraseña no válida"
-                    FailedLogin.LoggedUser -> "Error al logear usuario. Compruebe que no inició sesion en otro dispositivo"
-                    FailedLogin.MissingSomething -> "Usuario o contraseña faltante"
-                    FailedLogin.NetworkFail -> "No se ha podido conectar con el servidor"
-                    FailedLogin.TooManyRequests -> "Ha agotado todos los intentos de inicio de sesion. Intentelo más adelante"
-                    null -> "Ha ocurrido un error inesperado al intentar realizar esa acción"
-                }
-            )
-        },
-        confirmButton = {
-            Button(
-                onClick = {
-                    onDimiss()
-                }) {
-                Text("OK")
-            }
-        }
-    )
-
-}
 
 
 @Composable
@@ -385,25 +353,7 @@ fun MediumContentLogin(navController: NavController) {
     }
 }
 
-@Composable
-fun RelativeLayoutComponent() {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-    ) {
 
-        Divider(color = Color.Gray)
-        Text(
-            text = "Tambien puedes",
-            color = Color.Gray,
-            modifier = Modifier
-                .background(Color.White)
-                .padding(horizontal = 4.dp)
-        )
-    }
-}
 
 
 @Preview(showBackground = true)

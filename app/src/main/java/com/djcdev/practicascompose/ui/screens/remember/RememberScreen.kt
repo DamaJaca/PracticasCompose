@@ -39,8 +39,8 @@ import androidx.navigation.compose.rememberNavController
 import com.djcdev.practicascompose.domain.model.exceptions.FailedLogin
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.HeadderIconIberdrola
+import com.djcdev.practicascompose.ui.companioncomposables.loginregister.RelativeLayoutComponent
 import com.djcdev.practicascompose.ui.navigation.Login
-import com.djcdev.practicascompose.ui.screens.login.RelativeLayoutComponent
 
 @Composable
 fun RememberScreen(navController: NavController){

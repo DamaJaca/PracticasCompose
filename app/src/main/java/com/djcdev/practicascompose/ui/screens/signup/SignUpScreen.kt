@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
@@ -47,9 +46,10 @@ import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.domain.model.exceptions.FailedSignUp
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.HeadderIconIberdrola
+import com.djcdev.practicascompose.ui.companioncomposables.loginregister.RelativeLayoutComponent
+import com.djcdev.practicascompose.ui.companioncomposables.loginregister.ShowErrorRegisterMessage
 import com.djcdev.practicascompose.ui.navigation.Home
 import com.djcdev.practicascompose.ui.navigation.Login
-import com.djcdev.practicascompose.ui.screens.login.RelativeLayoutComponent
 
 
 @Composable
@@ -251,36 +251,7 @@ fun BottomSignUp(navController: NavController, modifier: Modifier= Modifier) {
     }
 }
 
-@Composable
-fun ShowErrorRegisterMessage(fail: FailedSignUp?, onDimiss: () -> Unit) {
 
-    AlertDialog(
-        onDismissRequest = { onDimiss() },
-        title = {
-            Text(text = "Error!")
-        },
-        text = {
-            Text(
-                text = when (fail) {
-                    FailedSignUp.InvalidCredential -> "El email introducido no es válido. Comprueba que es un email válido"
-                    FailedSignUp.UserAlreadyExist -> "El usuario que intenta introducir ya está registrado"
-                    FailedSignUp.WeakPas -> "La contraseña es demasiado debil"
-                    FailedSignUp.NotSamePass -> "Las contraseñas no coinciden o los campos estan vacios"
-                    null -> "Ha ocurrido un error inesperado al intentar realizar esa acción"
-                }
-            )
-        },
-        confirmButton = {
-            Button(
-                onClick = {
-                    onDimiss()
-                }) {
-                Text("OK")
-            }
-        }
-    )
-
-}
 
 @Preview(showBackground = true)
 @Composable
