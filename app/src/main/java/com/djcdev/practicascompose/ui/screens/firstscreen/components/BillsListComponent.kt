@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,8 +29,8 @@ import com.djcdev.practicascompose.R
 
 
 @Composable
-fun BillsList(list : List<FacturaModel>){
-    LazyColumn {
+fun BillsList(list : List<FacturaModel>, modifier: Modifier=Modifier){
+    LazyColumn (modifier = modifier) {
         items(list){
             ItemBill(factura = it)
         }
@@ -50,7 +51,7 @@ fun ItemBill(factura:FacturaModel){
                 showDialog = true
             }
             .fillMaxWidth()
-            .padding(vertical = 16.dp),
+            .padding(vertical = 24.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -59,14 +60,19 @@ fun ItemBill(factura:FacturaModel){
 
             Column {
 
-                Text(text = "${factura.importe} €", style = MaterialTheme.typography.titleMedium)
+                Text(text = factura.fecha, style = MaterialTheme.typography.titleMedium)
                 if (factura.estado=="Pendiente de pago"){
                     Text(text = "Pendiente de pago", color = Color.Red, style = MaterialTheme.typography.bodyMedium)
                 }
 
             }
 
-            Icon(painter = painterResource(id = R.drawable.ic_next), contentDescription = null, tint = Color.Black)
+            Row {
+                Text(text = "${factura.importe} €")
+                Spacer(modifier = Modifier.padding(8.dp))
+                Icon(painter = painterResource(id = R.drawable.ic_next), contentDescription = null, tint = Color.Black)
+            }
+
 
         }
 

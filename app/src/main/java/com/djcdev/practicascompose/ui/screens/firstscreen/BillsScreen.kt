@@ -86,7 +86,7 @@ fun BillsScreen(navController: NavController) {
                 } else {
                     if (!error) {
 
-                        BillsList(list = bills)
+                        BillsList(list = bills, modifier= Modifier.padding(horizontal = 16.dp))
 
                     } else {
                         Box(
