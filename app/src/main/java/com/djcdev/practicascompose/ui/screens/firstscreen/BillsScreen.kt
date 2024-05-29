@@ -23,7 +23,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.TopBarAction
@@ -42,6 +41,7 @@ fun BillsScreen(navController: NavController) {
     val error by billsViewModel.errorInNet.collectAsState()
     val mock by billsViewModel.isMockCheked.collectAsState()
     val bills by billsViewModel.bills.collectAsState()
+    val isFiltered by billsViewModel.isFiltered.collectAsState()
 
     billsViewModel.getFacturas()
 
@@ -65,7 +65,11 @@ fun BillsScreen(navController: NavController) {
                         checked = mock,
                         onCheckedChange = {
                             billsViewModel.setIsMockCheked(!mock)
-                            billsViewModel.getFacturas()
+                            if (!isFiltered){
+                                billsViewModel.getFacturas()
+                            }else{
+                                billsViewModel.filterFacturas()
+                            }
                         }
                     )
                 }
@@ -84,7 +88,7 @@ fun BillsScreen(navController: NavController) {
                     }
 
                 } else {
-                    if (!error) {
+                    if (bills.isNotEmpty()) {
 
                         BillsList(list = bills, modifier= Modifier.padding(horizontal = 16.dp))
 
@@ -93,7 +97,8 @@ fun BillsScreen(navController: NavController) {
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            Text(text = "Ha ocurrido un problema al cargar")
+                            val msg = if (error)"Ha ocurrido un problema al cargar" else "No se han encontrado facturas con esas especificaciones"
+                            Text(text = msg)
                         }
                     }
                 }
