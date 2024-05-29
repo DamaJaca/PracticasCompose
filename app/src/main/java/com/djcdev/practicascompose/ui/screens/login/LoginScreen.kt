@@ -94,50 +94,51 @@ fun LoginScreen(navController: NavController) {
 
     }
 
-    ComposeStructure(topAppBar = { }) {
-        Box(modifier = Modifier.fillMaxSize()) {
-            if (!isUserLoaded) {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .size(24.dp)
-                        .background(Color.Transparent)
-                        .align(Alignment.Center)
-                )
-            } else {
-                Column(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(horizontal = 16.dp),
-                    verticalArrangement = Arrangement.SpaceBetween,
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
+    ComposeStructure(topAppBar = { }, statusBar = false,
+        contentApp = {
+            Box(modifier = Modifier.fillMaxSize()) {
+                if (!isUserLoaded) {
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .size(24.dp)
+                            .background(Color.Transparent)
+                            .align(Alignment.Center)
+                    )
+                } else {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 16.dp),
+                        verticalArrangement = Arrangement.SpaceBetween,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
 
-                    if (userModel!!.user==null && userModel!!.pass==null){
-                        runBlocking { saveUser("","",context)
-                        userModel = getUser(context).first()
+                        if (userModel!!.user == null && userModel!!.pass == null) {
+                            runBlocking {
+                                saveUser("", "", context)
+                                userModel = getUser(context).first()
+                            }
                         }
-                    }
 
 
-                    if (userModel!!.user == "" && userModel!!.pass == "") {
-                        HeadderIconIberdrola()
+                        if (userModel!!.user == "" && userModel!!.pass == "") {
+                            HeadderIconIberdrola()
 
-                        MediumContentLogin(navController)
+                            MediumContentLogin(navController)
 
-                        BottomContentLogin(navController)
-                    }
-                    else{
-                        LaunchedEffect(Unit) {
-                            navController.navigate(Home)
+                            BottomContentLogin(navController)
+                        } else {
+                            LaunchedEffect(Unit) {
+                                navController.navigate(Home)
+                            }
                         }
+
                     }
+
 
                 }
-
-
             }
-        }
-    }
+        })
 
 
 }

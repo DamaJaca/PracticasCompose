@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -27,9 +28,11 @@ import com.djcdev.practicascompose.R
 
 
 @Composable
-fun BillsList(){
+fun BillsList(list : List<FacturaModel>){
     LazyColumn {
-
+        items(list){
+            ItemBill(factura = it)
+        }
     }
 }
 
@@ -70,6 +73,35 @@ fun ItemBill(factura:FacturaModel){
         Divider()
 
     }
+}
+val facturas = listOf(
+    FacturaModel("Pagada", 123.45, "01/01/2021"),
+    FacturaModel("Pendiente de pago", 234.56, "15/02/2021"),
+    FacturaModel("Pagada", 345.67, "23/03/2021"),
+    FacturaModel("Pendiente de pago", 456.78, "04/04/2021"),
+    FacturaModel("Pagada", 567.89, "12/05/2021"),
+    FacturaModel("Pendiente de pago", 678.90, "21/06/2021"),
+    FacturaModel("Pagada", 789.01, "30/07/2021"),
+    FacturaModel("Pendiente de pago", 890.12, "08/08/2021"),
+    FacturaModel("Pagada", 901.23, "17/09/2021"),
+    FacturaModel("Pendiente de pago", 112.34, "26/10/2021"),
+    FacturaModel("Pagada", 223.45, "05/11/2021"),
+    FacturaModel("Pendiente de pago", 334.56, "14/12/2021"),
+    FacturaModel("Pagada", 445.67, "22/01/2022"),
+    FacturaModel("Pendiente de pago", 556.78, "01/02/2022"),
+    FacturaModel("Pagada", 667.89, "10/03/2022"),
+    FacturaModel("Pendiente de pago", 778.90, "19/04/2022"),
+    FacturaModel("Pagada", 889.01, "28/05/2022"),
+    FacturaModel("Pendiente de pago", 990.12, "06/06/2022"),
+    FacturaModel("Pagada", 101.23, "15/07/2022"),
+    FacturaModel("Pendiente de pago", 212.34, "24/08/2022")
+)
+
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewList(){
+    BillsList(list = facturas)
 }
 
 @Preview(showBackground = true)

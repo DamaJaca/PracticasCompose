@@ -33,14 +33,17 @@ import androidx.navigation.compose.rememberNavController
 import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.navigation.Login
+import com.djcdev.practicascompose.ui.navigation.PracticeOne
 import com.djcdev.practicascompose.ui.screens.login.saveUser
 import kotlinx.coroutines.runBlocking
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
-    ComposeStructure(topAppBar = { }) {
-        ContentHome(navController)
-    }
+    ComposeStructure(
+        topAppBar = { }, statusBar = false,
+        contentApp =  {
+            ContentHome(navController)
+    })
 }
 
 @Composable
@@ -64,7 +67,7 @@ private fun ContentHome(
             PracticeItem(
                 text = "Practica 1",
                 imageRes = R.drawable.ic_next
-            ) { navController.navigate(Login) }
+            ) { navController.navigate(PracticeOne) }
 
             Divider(
                 color = Color.Gray,

@@ -71,7 +71,7 @@ fun TopBarAction(name: String, toBackButton: () -> Unit, toActionButton: () -> U
                     )
                     Text(
                         text = "Volver al menú",
-                        fontSize = 8.sp,
+                        fontSize = 13.sp,
                         color = MaterialTheme.colorScheme.primary
                     )
                     Spacer(modifier = Modifier.padding(8.dp))

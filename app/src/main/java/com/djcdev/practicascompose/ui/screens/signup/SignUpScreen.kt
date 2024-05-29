@@ -54,7 +54,8 @@ import com.djcdev.practicascompose.ui.screens.login.RelativeLayoutComponent
 
 @Composable
 fun SignUpScreen(navController: NavController){
-    ComposeStructure(topAppBar = {  }) {
+    ComposeStructure(topAppBar = {  }, statusBar = false,
+        contentApp = {
 
         Box(modifier = Modifier.fillMaxSize()) {
             Column(
@@ -72,7 +73,7 @@ fun SignUpScreen(navController: NavController){
             }
         }
 
-    }
+    })
 }
 
 @Composable

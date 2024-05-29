@@ -44,7 +44,8 @@ import com.djcdev.practicascompose.ui.screens.login.RelativeLayoutComponent
 
 @Composable
 fun RememberScreen(navController: NavController){
-    ComposeStructure(topAppBar = {  }) {
+    ComposeStructure(topAppBar = {  }, statusBar = false,
+        contentApp = {
 
         Box(modifier = Modifier.fillMaxSize()) {
             Column(
@@ -62,7 +63,7 @@ fun RememberScreen(navController: NavController){
             }
         }
 
-    }
+    })
 }
 
 @Composable
