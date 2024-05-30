@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.djcdev.practicascompose.ui.screens.filterscreen.FilterBills
 import com.djcdev.practicascompose.ui.screens.firstscreen.BillsScreen
 import com.djcdev.practicascompose.ui.screens.home.HomeScreen
 import com.djcdev.practicascompose.ui.screens.login.LoginScreen
@@ -32,7 +33,7 @@ fun NavApp () {
             BillsScreen(navController)
         }
         composable<FilterBills>{
-            HomeScreen(navController)
+            FilterBills(navController)
         }
         composable<PracticeTwo>{
             HomeScreen(navController)

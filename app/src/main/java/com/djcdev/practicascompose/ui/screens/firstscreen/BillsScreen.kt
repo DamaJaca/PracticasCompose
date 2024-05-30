@@ -43,7 +43,9 @@ fun BillsScreen(navController: NavController) {
     val bills by billsViewModel.bills.collectAsState()
     val isFiltered by billsViewModel.isFiltered.collectAsState()
 
-    billsViewModel.getFacturas()
+    if(!isFiltered){
+        billsViewModel.getFacturas()
+    }
 
     ComposeStructure(
         topAppBar = {

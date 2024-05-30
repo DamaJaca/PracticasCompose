@@ -54,21 +54,46 @@ class BillsViewModel @Inject constructor(
     private var _isPendingChecked = MutableStateFlow(false)
     val isPendingChecked get() = _isPendingChecked
 
-    fun changeIsPending(){
-        _isPendingChecked.value=!_isPendingChecked.value
+    fun changeIsPending(boolean:Boolean){
+        _isPendingChecked.value=boolean
+    }
+
+    private var _isNulledChecked = MutableStateFlow(false)
+    val isNulledChecked get() = _isNulledChecked
+
+    fun changeIsNulled(boolean:Boolean){
+        _isNulledChecked.value=boolean
+    }
+
+    private var _isFixedChecked = MutableStateFlow(false)
+    val isFixedChecked get() = _isFixedChecked
+
+    fun changeIsFixed(boolean:Boolean){
+        _isFixedChecked.value=boolean
+    }
+
+    private var _isPlannedChecked = MutableStateFlow(false)
+    val isPlannedChecked get() = _isPlannedChecked
+
+    fun changeIsPlanned(boolean:Boolean){
+        _isPlannedChecked.value=boolean
     }
 
 
     private var _isPaidCheked = MutableStateFlow(false)
     val isPaidCheked get() = _isPaidCheked
 
-    fun changeIsPaid(){
-        _isPaidCheked.value=!_isPaidCheked.value
+    fun changeIsPaid(boolean: Boolean){
+        _isPaidCheked.value=boolean
     }
 
 
-    private var _maxImport = MutableStateFlow(50.00)
+    private var _maxImport = MutableStateFlow(0.00)
     val maxImport get() = _maxImport
+
+    fun setMaxImport(newImport:Double){
+        _maxImport.value= newImport
+    }
 
 
 

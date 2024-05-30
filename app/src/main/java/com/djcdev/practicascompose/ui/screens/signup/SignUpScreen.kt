@@ -67,7 +67,7 @@ fun SignUpScreen(navController: NavController){
             ) {
                 HeadderIconIberdrola()
 
-                ContentSignUp(navController)
+                ContentSignUp()
 
                 BottomSignUp(navController)
             }
@@ -77,7 +77,7 @@ fun SignUpScreen(navController: NavController){
 }
 
 @Composable
-fun ContentSignUp(navController: NavController) {
+fun ContentSignUp() {
     val viewModel: SignUpViewModel = hiltViewModel()
 
 
