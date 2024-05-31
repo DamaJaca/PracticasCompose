@@ -101,7 +101,7 @@ class BillsViewModel @Inject constructor(
     val initialDate get() = _initialDate
     fun setInitialDate(date:String){
         _initialDate.value=date
-        if(_finalDate.value== "dd/mm/yyyy"){
+        if(_finalDate.value== "dd/mm/yyyy"&& date!= "dd/mm/yyyy"){
             _finalDate.value= SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(
                 Date()
             )
@@ -120,6 +120,20 @@ class BillsViewModel @Inject constructor(
 
     fun setIsMockCheked(boolean: Boolean) {
         _isMockCheked.value = boolean
+    }
+
+    private var _showInitialDatePickerDialog = MutableStateFlow(false)
+    val showInitialDatePiclerDialog get () = _showInitialDatePickerDialog
+
+    fun setShowInitialDatePickerDialog (boolean: Boolean){
+        _showInitialDatePickerDialog.value= boolean
+    }
+
+    private var _showFinalDatePickerDialog = MutableStateFlow(false)
+    val showFinalDatePickerDialog get () = _showFinalDatePickerDialog
+
+    fun setShowFinalDatePickerDialog (boolean: Boolean){
+        _showFinalDatePickerDialog.value= boolean
     }
 
 
