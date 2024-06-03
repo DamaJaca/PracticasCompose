@@ -1,3 +1,68 @@
 <resources>
     <string name="app_name">PracticasCompose</string>
+
+
+
+    <!--    Home Page   -->
+    <string name="practicasAndroid">Prácticas Android</string>
+    <string name="practicas_practica1">Práctica 1</string>
+    <string name="practicas_practica2">Práctica 2</string>
+    <string name="pendiente_de_pago">Pendiente de pago</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="consumo">Consumo</string>
+    <string name="facturas">Facturas</string>
+    <string name="error_facturas">ERROR (Ha ocurrido un error)</string>
+    <string name="information_factura_title">Información</string>
+    <string name="not_enabled_function">Esta funcionalidad no esta disponible</string>
+    <string name="close">Cerrar</string>
+    <string name="factuas_filter">Filtrar Facturas</string>
+    <string name="with_date_title">Con fecha de emisión</string>
+    <string name="date_filter">día/mes/año</string>
+    <string name="to_date">Hasta:</string>
+    <string name="from_date">Desde:</string>
+    <string name="filter_by_price">Por un importe</string>
+    <string name="filter_by_state">Por estado</string>
+    <string name="plan_de_pago">Plan de pago</string>
+    <string name="cuota_fija">Cuota Fija</string>
+    <string name="anuladas">Anuladas</string>
+    <string name="pagadas">Pagadas</string>
+    <string name="apply">Aplicar</string>
+    <string name="eliminar_filtros">Eliminar Filtros</string>
+    <string name="back">Atrás</string>
+    <string name="smart_solar">Smart Solar</string>
+    <string name="real_time_string_give">Aqui tienes los datos de tu instalación fotovoltaica en tiempo real</string>
+    <string name="auto_consumo">Autoconsumo:</string>
+    <string name="percentil_tool">92%</string>
+    <string name="on_progress_text_energy">Estamos trabajando en mejorar la App. Tus paneles solares siguen produciendo. En breve podrás seguir viendo tu producción solar. Sentimos las molestias</string>
+    <string name="estado_solucitud">Estado solicitud alta autoconsumidor</string>
+    <string name="tipo_autoconsumo">Tipo autoconsumo</string>
+    <string name="compensacion_excedentes">Compensación de excedentes</string>
+    <string name="potencia_instalacion">Potencia de instalación</string>
+    <string name="cau_autoconsumo">CAU (Código Autoconsumo)</string>
+    <string name="estado_solucitud2">Estado solicitud autoconsumo</string>
+    <string name="stimated_time_smart_solar">El tiempo estimado de activación de tu autoconsumo es de 1 a 2 meses, éste variará en función de tu comunidad autónoma y distribuidora</string>
+    <string name="ok">Aceptar</string>
+    <string name="infoimage">infoImage</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="logo_iberdrola">logo_iberdrola</string>
+    <string name="remember_pass">Recordar Contraseña</string>
+    <string name="forgotten_info"><u>He olvidado mis datos</u></string>
+    <string name="login">Entrar</string>
+    <string name="singup">Registrarte</string>
+    <string name="back_to_login">Volver a Inicio de sesión</string>
+    <string name="new_user_register">Registro de nuevo Usuario</string>
+    <string name="recuperation_email">Enviar correo recuperacion</string>
+    <string name="you_can_also_see">Tambien puedes ver</string>
+    <string name="pass_confirm">Confirmar Contraseña</string>
+    <string name="main_menu">Menú principal</string>
+    <string name="navigation">Navegación</string>
+    <string name="abrir_navegador_externo">Abrir Navegador Externo</string>
+    <string name="abrir_webview">Abrir WebView</string>
+    <string name="desde_una_aplicaci_n_android_se_pude_acceder_a_p_ginas_webs_mediante_el_nave_gador_externo_o_mediante_webviews">Desde una aplicación Android, se pude acceder a páginas webs, mediante el navegador externo o mediante Webviews</string>
+    <string name="practicas_practica3">Práctica 3</string>
+    <string name="not_loaded_list">La lista no ha sido cargada</string>
+    <string name="not_bills_response">No se ha devuelto ningúna factura</string>
 </resources>

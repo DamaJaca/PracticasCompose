@@ -11,6 +11,7 @@ import com.djcdev.practicascompose.ui.screens.firstscreen.BillsViewModel
 import com.djcdev.practicascompose.ui.screens.home.HomeScreen
 import com.djcdev.practicascompose.ui.screens.login.LoginScreen
 import com.djcdev.practicascompose.ui.screens.remember.RememberScreen
+import com.djcdev.practicascompose.ui.screens.secondscreen.SecondScreen
 import com.djcdev.practicascompose.ui.screens.signup.SignUpScreen
 
 
@@ -39,7 +40,7 @@ fun NavApp () {
             FilterBills(navController= navController, facturasViewModel)
         }
         composable<PracticeTwo>{
-            HomeScreen(navController= navController)
+            SecondScreen(navController= navController)
         }
         composable<PracticeThree>{
             HomeScreen(navController= navController)
