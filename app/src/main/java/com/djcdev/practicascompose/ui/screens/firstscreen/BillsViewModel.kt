@@ -8,13 +8,17 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.util.Date
 import java.util.Locale
 import javax.inject.Inject
+import kotlin.math.max
+
 
 @HiltViewModel
 class BillsViewModel @Inject constructor(
@@ -30,6 +34,9 @@ class BillsViewModel @Inject constructor(
 
     private var _isFiltered = MutableStateFlow(false)
     val isFiltered get() = _isFiltered
+    fun changeIsFiltered(boolean: Boolean){
+        _isFiltered.value=boolean
+    }
 
     private var _errorInNet = MutableStateFlow(false)
     val errorInNet get() = _errorInNet
@@ -157,8 +164,20 @@ class BillsViewModel @Inject constructor(
     }
     fun filterFacturas(){
         _isBillsLoading.value=true
-        CoroutineScope(Dispatchers.IO).launch {
-            val result: List<FacturaModel> = filterFacturasUseCase(isPendingChecked.value, isPaidCheked.value, maxImport.value, initialDate.value,finalDate.value,isMockCheked.value)
+
+        var importe :Double? = null
+        if (maxImport.value != 0.0){
+            importe = maxImport.value
+        }
+
+        CoroutineScope(Dispatchers.IO).launch{
+            val result: List<FacturaModel> = if (initialDate.value!= "dd/mm/yyyy" && finalDate.value!= "dd/mm/yyyy"){
+                 filterFacturasUseCase.invoke(isPendingChecked.value, isPaidCheked.value, importe, initialDate.value,finalDate.value,isMockCheked.value)
+            }
+            else{
+                filterFacturasUseCase.invoke(isPendingChecked.value, isPaidCheked.value, importe, null, null,isMockCheked.value)
+            }
+
 
             _bills.value = result
             _isBillsLoading.value = false

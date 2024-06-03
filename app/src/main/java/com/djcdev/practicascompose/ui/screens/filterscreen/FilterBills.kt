@@ -1,46 +1,42 @@
 package com.djcdev.practicascompose.ui.screens.filterscreen
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Dialog
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.TopBarNoAction
-import com.djcdev.practicascompose.ui.navigation.FilterBills
-import com.djcdev.practicascompose.ui.navigation.Home
 import com.djcdev.practicascompose.ui.navigation.PracticeOne
 import com.djcdev.practicascompose.ui.screens.filterscreen.components.ButtomsFilter
+import com.djcdev.practicascompose.ui.screens.filterscreen.components.CheckedComponents
 import com.djcdev.practicascompose.ui.screens.filterscreen.components.DatePickerButtons
-import com.djcdev.practicascompose.ui.screens.filterscreen.components.DatePickerDialogContent
+import com.djcdev.practicascompose.ui.screens.filterscreen.components.RangeSliderComponent
 import com.djcdev.practicascompose.ui.screens.firstscreen.BillsViewModel
 
 @Composable
-fun FilterBills (navController: NavController) {
+fun FilterBills (navController: NavController, viewModel: BillsViewModel) {
 
     ComposeStructure(topAppBar = { TopBarNoAction(name = "Filtro de Facturas") { navController.navigate(PracticeOne) } }, statusBar = true,
         contentApp = {
-            Column (modifier = Modifier
+            LazyColumn (modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
 
             ){
-                ContentFilter()
+                item{
+                    ContentFilter(viewModel)
+                }
 
-                ButtomsFilter(navController)
+                item{
+                    ButtomsFilter(navController = navController, viewModel =  viewModel)
+                }
             }
 
         }
@@ -51,14 +47,28 @@ fun FilterBills (navController: NavController) {
 
 
 @Composable
-fun ContentFilter() {
+fun ContentFilter(viewModel: BillsViewModel) {
+    Column {
 
-    DatePickerButtons()
+        DatePickerButtons(viewModel)
 
-}
+        Spacer(modifier = Modifier.padding(8.dp))
+        HorizontalDivider(Modifier.fillMaxWidth())
+        Spacer(modifier = Modifier.padding(8.dp))
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewFilterBills(){
-    FilterBills(navController = NavController(LocalContext.current))
+        RangeSliderComponent(viewModel)
+
+        Spacer(modifier = Modifier.padding(8.dp))
+        HorizontalDivider(Modifier.fillMaxWidth())
+        Spacer(modifier = Modifier.padding(8.dp))
+
+        CheckedComponents(viewModel)
+
+        Spacer(modifier = Modifier.padding(8.dp))
+        HorizontalDivider(Modifier.fillMaxWidth())
+        Spacer(modifier = Modifier.padding(8.dp))
+
+
+    }
+
 }

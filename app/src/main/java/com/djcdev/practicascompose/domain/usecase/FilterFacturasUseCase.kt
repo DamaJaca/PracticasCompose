@@ -28,14 +28,14 @@ class FilterFacturasUseCase @Inject constructor (private val repository: Reposit
         val facturasFinal: MutableList<FacturaModel> = mutableListOf()
 
         //Comprobamos las que están pendientes de pago
-        if (pendientePago != null) {
+        if (pendientePago != false) {
             facturasFiltradas.clear()
             facturasFiltradas = facturas.filter { it.estado == "Pendiente de pago" }.toMutableList()
             facturasFinal.addAll(facturasFiltradas)
         }
 
         //Comprobamos las que estan pagadas
-        if (pagada != null) {
+        if (pagada != false) {
             facturasFiltradas.clear()
             facturasFiltradas = facturas.filter { it.estado == "Pagada" }.toMutableList()
             facturasFinal.addAll(facturasFiltradas)
@@ -81,8 +81,8 @@ class FilterFacturasUseCase @Inject constructor (private val repository: Reposit
             }
         }
 
-        return if (importeMax==null && fechaFin ==null
-            && fechaInicio==null && pagada ==null && pendientePago==null){
+        return if (importeMax==0.0 && fechaFin ==null
+            && fechaInicio==null && pagada ==false && pendientePago==false){
             facturas
         } else{
             facturasFinal

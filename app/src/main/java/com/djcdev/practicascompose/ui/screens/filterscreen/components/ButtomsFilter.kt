@@ -22,15 +22,15 @@ import com.djcdev.practicascompose.ui.navigation.PracticeOne
 import com.djcdev.practicascompose.ui.screens.firstscreen.BillsViewModel
 
 @Composable
-fun ButtomsFilter(navController: NavController, modifier: Modifier = Modifier) {
+fun ButtomsFilter(navController: NavController, modifier: Modifier = Modifier, viewModel: BillsViewModel = hiltViewModel()) {
 
-    val viewModel: BillsViewModel = hiltViewModel()
 
     Column (
         modifier = modifier
     ) {
         Button(
             onClick = {
+                viewModel.changeIsFiltered(true)
                 viewModel.filterFacturas()
                 navController.navigate(PracticeOne)
             },
@@ -58,6 +58,7 @@ fun ButtomsFilter(navController: NavController, modifier: Modifier = Modifier) {
                 viewModel.changeIsNulled(false)
                 viewModel.changeIsFixed(false)
                 viewModel.changeIsPlanned(false)
+                viewModel.changeIsFiltered(false)
             },
             border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
             modifier = Modifier
@@ -74,6 +75,7 @@ fun ButtomsFilter(navController: NavController, modifier: Modifier = Modifier) {
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

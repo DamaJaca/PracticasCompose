@@ -32,26 +32,24 @@ import com.djcdev.practicascompose.ui.screens.firstscreen.components.BillsList
 
 
 @Composable
-fun BillsScreen(navController: NavController) {
-
-    val billsViewModel :BillsViewModel = hiltViewModel()
+fun BillsScreen(navController: NavController, viewModel :BillsViewModel = hiltViewModel()) {
 
 
-    val isLoading by billsViewModel.isBillsLoading.collectAsState()
-    val error by billsViewModel.errorInNet.collectAsState()
-    val mock by billsViewModel.isMockCheked.collectAsState()
-    val bills by billsViewModel.bills.collectAsState()
-    val isFiltered by billsViewModel.isFiltered.collectAsState()
+    val isLoading by viewModel.isBillsLoading.collectAsState()
+    val error by viewModel.errorInNet.collectAsState()
+    val mock by viewModel.isMockCheked.collectAsState()
+    val bills by viewModel.bills.collectAsState()
+    val isFiltered by viewModel.isFiltered.collectAsState()
 
     if(!isFiltered){
-        billsViewModel.getFacturas()
+        viewModel.getFacturas()
     }
 
     ComposeStructure(
         topAppBar = {
             TopBarAction(name = "Facturas",
                 toBackButton = { navController.navigate(Home) },
-                toActionButton = { navController.navigate(FilterBills) })
+                toActionButton = { if (!isLoading)navController.navigate(FilterBills) })
         }, statusBar = true,
         contentApp = {
             Column(modifier = Modifier.fillMaxSize()) {
@@ -66,11 +64,11 @@ fun BillsScreen(navController: NavController) {
                     Switch(
                         checked = mock,
                         onCheckedChange = {
-                            billsViewModel.setIsMockCheked(!mock)
+                            viewModel.setIsMockCheked(!mock)
                             if (!isFiltered){
-                                billsViewModel.getFacturas()
+                                viewModel.getFacturas()
                             }else{
-                                billsViewModel.filterFacturas()
+                                viewModel.filterFacturas()
                             }
                         }
                     )
@@ -100,7 +98,7 @@ fun BillsScreen(navController: NavController) {
                             contentAlignment = Alignment.Center
                         ) {
                             val msg = if (error)"Ha ocurrido un problema al cargar" else "No se han encontrado facturas con esas especificaciones"
-                            Text(text = msg)
+                            Text(text = msg, modifier = Modifier.padding(horizontal = 16.dp))
                         }
                     }
                 }
