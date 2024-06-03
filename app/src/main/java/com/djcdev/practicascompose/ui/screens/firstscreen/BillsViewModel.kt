@@ -162,6 +162,13 @@ class BillsViewModel @Inject constructor(
             _isBillsLoading.value = false
         }
     }
+
+    fun getMaxImport(){
+        CoroutineScope(Dispatchers.IO).launch {
+            _billsMaxImport.value= getFacturasUseCase.invoke(isMockCheked.value, firebaseConfig.getBoolean("ktor_client")).maxOf { it.importe }.toFloat()
+        }
+    }
+
     fun filterFacturas(){
         _isBillsLoading.value=true
 
