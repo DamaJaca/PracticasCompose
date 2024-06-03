@@ -21,8 +21,6 @@ class FilterFacturasUseCase @Inject constructor (private val repository: Reposit
             repository.getFacturasFromDatabase()!!
         }
 
-
-
         var facturasFiltradas: MutableList<FacturaModel> = mutableListOf()
 
         val facturasFinal: MutableList<FacturaModel> = mutableListOf()
@@ -42,7 +40,7 @@ class FilterFacturasUseCase @Inject constructor (private val repository: Reposit
         }
         //Comprobamos el importe máximo, si no es nulo comprobamos si se ha filtrado primero por otro parámetro de checkbox para hacerle el filtro a eso
         if (importeMax != null) {
-            if (pagada == null && pendientePago == null) {
+            if (pagada == false && pendientePago == false) {
                 facturasFiltradas.clear()
                 facturasFiltradas = facturas.filter { it.importe <= importeMax }.toMutableList()
                 facturasFinal.addAll(facturasFiltradas)
@@ -60,7 +58,7 @@ class FilterFacturasUseCase @Inject constructor (private val repository: Reposit
         //Ahora, ultimo filtrado por fecha
         if (fechaInicio != null && fechaFin != null) {
             //Si no se ha hecho ningun filtro previo:
-            if (pagada == null && pendientePago == null && importeMax == null) {
+            if (pagada == false && pendientePago == false && importeMax == 0.0) {
                 facturas.map {if (compararFechas(it.fecha, fechaFin)<=0 &&
                     compararFechas(it.fecha, fechaInicio)>=0
                 ) {

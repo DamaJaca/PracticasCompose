@@ -70,6 +70,7 @@ fun BillsScreen(navController: NavController, viewModel :BillsViewModel = hiltVi
                             }else{
                                 viewModel.filterFacturas()
                             }
+                            viewModel.getMaxImport()
                         }
                     )
                 }
