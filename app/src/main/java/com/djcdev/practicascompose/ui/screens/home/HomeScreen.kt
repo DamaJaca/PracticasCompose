@@ -34,6 +34,8 @@ import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.navigation.Login
 import com.djcdev.practicascompose.ui.navigation.PracticeOne
+import com.djcdev.practicascompose.ui.navigation.PracticeThree
+import com.djcdev.practicascompose.ui.navigation.PracticeTwo
 import com.djcdev.practicascompose.ui.screens.login.saveUser
 import kotlinx.coroutines.runBlocking
 
@@ -78,7 +80,7 @@ private fun ContentHome(
             PracticeItem(
                 text = "Practica 2",
                 imageRes = R.drawable.ic_next
-            ) { }
+            ) { navController.navigate(PracticeTwo) }
 
             Divider(
                 color = Color.Gray,
@@ -89,7 +91,7 @@ private fun ContentHome(
             PracticeItem(
                 text = "Practica 3",
                 imageRes = R.drawable.ic_next
-            ) {  }
+            ) { navController.navigate(PracticeThree) }
         }
 
         FloatingActionButton(

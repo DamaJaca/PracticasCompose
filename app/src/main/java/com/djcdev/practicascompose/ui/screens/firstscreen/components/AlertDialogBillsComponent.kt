@@ -4,6 +4,8 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.domain.model.exceptions.FailedLogin
 
 @Composable
@@ -11,17 +13,17 @@ fun AlertDialogBills(onDimiss: () ->Unit){
     AlertDialog(
         onDismissRequest = { onDimiss() },
         title = {
-            Text(text = "Información")
+            Text(text = stringResource(id = R.string.information_factura_title))
         },
         text = {
-            Text("Esta funcionalidad aún no está disponible")
+            Text(stringResource(id = R.string.not_enabled_function))
         },
         confirmButton = {
             Button(
                 onClick = {
                     onDimiss()
                 }) {
-                Text("Cerrar")
+                Text(stringResource(id = R.string.close))
             }
         }
     )

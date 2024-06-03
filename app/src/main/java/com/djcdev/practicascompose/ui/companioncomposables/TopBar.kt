@@ -34,25 +34,35 @@ import io.ktor.http.ContentType
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopBarNoAction(name: String, toBackButton: () -> Unit?) {
-    TopAppBar(
-        title = { Text(text = "") },
-        navigationIcon = @Composable {
-            Row(verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.clickable { toBackButton() }) {
-                Icon(
-                    imageVector = Icons.Default.KeyboardArrowLeft,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.primary
-                )
-                Text(
-                    text = "Volver al menú",
-                    fontSize = 13.sp,
-                    color = MaterialTheme.colorScheme.primary
-                )
-                Spacer(modifier = Modifier.padding(8.dp))
+    Column {
+        TopAppBar(
+            title = { Text(text = "") },
+            navigationIcon = @Composable {
+                Row(verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.clickable { toBackButton() }) {
+                    Icon(
+                        imageVector = Icons.Default.KeyboardArrowLeft,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.primary
+                    )
+                    Text(
+                        text = "Volver al menú",
+                        fontSize = 13.sp,
+                        color = MaterialTheme.colorScheme.primary
+                    )
+                    Spacer(modifier = Modifier.padding(8.dp))
+                }
             }
-        }
-    )
+
+        )
+        Text(
+            text = name, style = MaterialTheme.typography.titleLarge.copy(
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.Black
+            ),
+            modifier = Modifier.padding(8.dp)
+        )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -87,7 +97,8 @@ fun TopBarAction(name: String, toBackButton: () -> Unit, toActionButton: () -> U
         )
         Text(
             text = name, style = MaterialTheme.typography.titleLarge.copy(
-                fontWeight = FontWeight.ExtraBold
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.Black
             ),
             modifier = Modifier.padding(8.dp)
         )

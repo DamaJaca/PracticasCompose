@@ -13,17 +13,22 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.TopBarNoAction
 import com.djcdev.practicascompose.ui.navigation.Home
+import com.djcdev.practicascompose.ui.screens.secondscreen.components.TabContent1
+import com.djcdev.practicascompose.ui.screens.secondscreen.components.TabContent2
+import com.djcdev.practicascompose.ui.screens.secondscreen.components.TabContent3
 
 @Composable
 fun SecondScreen(navController: NavController) {
     ComposeStructure(topAppBar = {
-        TopBarNoAction(name = "Smart Solar") {
+        TopBarNoAction(name = stringResource(id = R.string.smart_solar)) {
             navController.navigate(
                 Home
             )
@@ -49,9 +54,9 @@ fun SecondScreen(navController: NavController) {
             }
             Box(modifier = Modifier.padding(16.dp)){
                 when (selectedTab) {
-                    0->TabContent1()
-                    1->TabContent2()
-                    2->TabContent3()
+                    0-> TabContent1()
+                    1-> TabContent2()
+                    2-> TabContent3()
                 }
             }
 
