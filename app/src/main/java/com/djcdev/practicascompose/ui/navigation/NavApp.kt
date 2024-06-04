@@ -13,6 +13,7 @@ import com.djcdev.practicascompose.ui.screens.login.LoginScreen
 import com.djcdev.practicascompose.ui.screens.remember.RememberScreen
 import com.djcdev.practicascompose.ui.screens.secondscreen.SecondScreen
 import com.djcdev.practicascompose.ui.screens.signup.SignUpScreen
+import com.djcdev.practicascompose.ui.screens.thirdscreen.ThirdScreen
 
 
 @Composable
@@ -43,7 +44,7 @@ fun NavApp () {
             SecondScreen(navController= navController)
         }
         composable<PracticeThree>{
-            HomeScreen(navController= navController)
+            ThirdScreen(navController= navController)
         }
     }
 }
