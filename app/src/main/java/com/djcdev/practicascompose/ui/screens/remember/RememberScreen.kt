@@ -41,6 +41,7 @@ import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.HeadderIconIberdrola
 import com.djcdev.practicascompose.ui.companioncomposables.loginregister.RelativeLayoutComponent
 import com.djcdev.practicascompose.ui.navigation.Login
+import com.djcdev.practicascompose.ui.screens.remember.components.BottomRemember
 
 @Composable
 fun RememberScreen(navController: NavController){
@@ -77,99 +78,12 @@ fun ContentRemember(navController: NavController) {
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
-            keyboardActions = KeyboardActions(onNext = { /* Move focus to next field */ })
         )
 
 
 }
 
-@Composable
-fun BottomRemember(navController: NavController, modifier: Modifier = Modifier) {
 
-    val viewModel: RememberViewModel = hiltViewModel()
-
-    val context = LocalContext.current
-
-    val isLoading by viewModel.isLoading.collectAsState()
-    val email by viewModel.email.collectAsState()
-    var showDialog by rememberSaveable {
-        mutableStateOf(false)
-    }
-    var failedLog: FailedLogin? by remember {
-        mutableStateOf(null)
-    }
-    var logged by rememberSaveable {
-        mutableStateOf(false)
-    }
-
-
-    Column (
-        modifier = modifier
-    ) {
-        if (logged) Toast.makeText(
-            LocalContext.current,
-            "Se ha enviado el correo de recuperacion",
-            Toast.LENGTH_SHORT
-        ).show()
-        Button(
-            onClick = {
-                viewModel.changeIsLoading(true)
-                if(email!=""){
-                    viewModel.remember(email) { success: Boolean, fail: FailedLogin? ->
-                        if (fail == null) {
-                            if (success) {
-                                logged = true
-                            }
-                            navController.navigate(Login)
-                        } else {
-                            failedLog = fail
-                            showDialog = true
-                        }
-                    }
-                }else{
-                    failedLog=FailedLogin.MissingSomething
-                    showDialog=true
-                }
-            },
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-        ) {
-            if (isLoading) {
-                CircularProgressIndicator(
-                    modifier = Modifier
-                        .size(24.dp)
-                        .background(Color.Transparent)
-                )
-            } else {
-                Text("Enviar Correo")
-            }
-        }
-
-
-        RelativeLayoutComponent()
-
-        OutlinedButton(
-            onClick = {
-                navController.navigate(Login)
-            },
-            border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
-            modifier = Modifier
-                .padding(bottom = 16.dp)
-                .fillMaxWidth(),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.White
-            )
-        ) {
-            Text(
-                text = "Volver a Inicio",
-                color = MaterialTheme.colorScheme.primary
-            )
-        }
-    }
-}
 
 @Preview(showBackground = true)
 @Composable
