@@ -2,6 +2,7 @@ package com.djcdev.practicascompose.ui.screens.login
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -60,6 +62,9 @@ fun LoginScreen(navController: NavController) {
             isUserLoaded = true
 
 
+    }
+    DisposableEffect(key1 = Unit) {
+        onDispose { Log.d("Paco", "Disposed Login") }
     }
 
     ComposeStructure(topAppBar = { }, statusBar = false,

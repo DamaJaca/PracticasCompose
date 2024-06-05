@@ -31,7 +31,7 @@ import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.domain.model.exceptions.FailedSignUp
 import com.djcdev.practicascompose.ui.companioncomposables.loginregister.RelativeLayoutComponent
 import com.djcdev.practicascompose.ui.companioncomposables.loginregister.ShowErrorRegisterMessage
-import com.djcdev.practicascompose.ui.navigation.Home
+import com.djcdev.practicascompose.ui.navigation.Login
 import com.djcdev.practicascompose.ui.screens.signup.SignUpViewModel
 
 @Composable
@@ -79,7 +79,7 @@ fun BottomSignUp(navController: NavController, modifier: Modifier = Modifier) {
                                 signedUp = true
 
                             }
-                            navController.navigate(Home)
+                            navController.navigateUp()
                         } else {
                             failedLog = fail
                             showDialog = true
@@ -120,7 +120,9 @@ fun BottomSignUp(navController: NavController, modifier: Modifier = Modifier) {
 
         OutlinedButton(
             onClick = {
-                navController.navigateUp()
+                navController.navigate(Login) {
+                    popUpTo(Login) { inclusive = true }
+                }
             },
             border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
             modifier = Modifier

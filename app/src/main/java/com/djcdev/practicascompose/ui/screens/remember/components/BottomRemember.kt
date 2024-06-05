@@ -68,7 +68,9 @@ fun BottomRemember(navController: NavController, modifier: Modifier = Modifier) 
                             if (success) {
                                 logged = true
                             }
-                            navController.navigate(Login)
+                            navController.navigate(Login) {
+                                popUpTo(Login) { inclusive = true }
+                            }
                         } else {
                             failedLog = fail
                             showDialog = true
@@ -101,7 +103,9 @@ fun BottomRemember(navController: NavController, modifier: Modifier = Modifier) 
 
         OutlinedButton(
             onClick = {
-                navController.navigateUp()
+                navController.navigate(Login) {
+                    popUpTo(Login) { inclusive = true }
+                }
             },
             border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
             modifier = Modifier

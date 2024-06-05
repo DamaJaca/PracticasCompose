@@ -44,9 +44,9 @@ import kotlinx.coroutines.runBlocking
 fun HomeScreen(navController: NavHostController) {
     ComposeStructure(
         topAppBar = { }, statusBar = false,
-        contentApp =  {
+        contentApp = {
             ContentHome(navController)
-    })
+        })
 }
 
 @Composable
@@ -54,7 +54,7 @@ private fun ContentHome(
     navController: NavHostController
 ) {
     val context = LocalContext.current
-    Box (modifier = Modifier.fillMaxSize()){
+    Box(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier = Modifier
                 .padding(start = 16.dp, end = 16.dp)
@@ -97,21 +97,30 @@ private fun ContentHome(
 
         FloatingActionButton(
             onClick = {
-                Toast.makeText(context, context.getString(R.string.suscces_log_out), Toast.LENGTH_SHORT).show()
-                runBlocking { saveUser("","",context) }
-                navController.navigate(Login)
-                      },
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.suscces_log_out),
+                    Toast.LENGTH_SHORT
+                ).show()
+                runBlocking { saveUser("", "", context) }
+                navController.navigate(Login) {
+                    popUpTo(Login) { inclusive = true }
+                }
+            },
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(16.dp)
         ) {
-            Icon(imageVector = Icons.AutoMirrored.Filled.ExitToApp, contentDescription = stringResource(id = R.string.close))
+            Icon(
+                imageVector = Icons.AutoMirrored.Filled.ExitToApp,
+                contentDescription = stringResource(id = R.string.close)
+            )
         }
     }
 }
 
 @Composable
-fun PracticeItem(text: String, imageRes: Int, clickedImage :  () -> Unit) {
+fun PracticeItem(text: String, imageRes: Int, clickedImage: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -140,6 +149,6 @@ fun PracticeItem(text: String, imageRes: Int, clickedImage :  () -> Unit) {
 @Composable
 fun HomeFragmentScreenPreview() {
     Surface {
-        HomeScreen(navController= rememberNavController())
+        HomeScreen(navController = rememberNavController())
     }
 }
