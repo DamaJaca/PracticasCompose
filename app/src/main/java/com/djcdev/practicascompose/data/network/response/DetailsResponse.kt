@@ -1,6 +1,6 @@
-package com.djcdev.practicas.data.network.response
+package com.djcdev.practicascompose.data.network.response
 
-import com.djcdev.practicas.domain.model.DetailModel
+import com.djcdev.practicascompose.domain.model.DetailModel
 import com.google.gson.annotations.SerializedName
 
 data class DetailsResponse(

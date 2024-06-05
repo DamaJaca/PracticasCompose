@@ -1,11 +1,11 @@
 package com.djcdev.practicas.domain.usecase
 
 import android.util.Log
-import com.djcdev.practicas.domain.Repository
-import com.djcdev.practicas.domain.model.FacturaModel
+import com.djcdev.practicascompose.domain.Repository
+import com.djcdev.practicascompose.domain.model.FacturaModel
 import javax.inject.Inject
 
-class GetFacturasUseCase @Inject constructor(private val repository :Repository){
+class GetFacturasUseCase @Inject constructor(private val repository : Repository){
 
     suspend operator fun invoke (boolean: Boolean, ktor:Boolean) :List<FacturaModel> {
         if (!boolean){

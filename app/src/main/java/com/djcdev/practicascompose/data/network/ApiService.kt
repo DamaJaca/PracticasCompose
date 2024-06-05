@@ -1,10 +1,10 @@
-package com.djcdev.practicas.data.network
+package com.djcdev.practicascompose.data.network
 
-import com.djcdev.practicas.data.network.response.FacturasResponse
+import com.djcdev.practicascompose.data.network.response.FacturasResponse
 import retrofit2.http.GET
 
 interface ApiService {
 
     @GET("/facturas")
-    suspend fun getFacturas():FacturasResponse
+    suspend fun getFacturas(): FacturasResponse
 }

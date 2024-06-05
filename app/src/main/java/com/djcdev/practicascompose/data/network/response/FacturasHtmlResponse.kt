@@ -1,15 +1,10 @@
-package com.djcdev.practicas.data.network.response
+package com.djcdev.practicascompose.data.network.response
 
-import com.djcdev.practicas.domain.model.FacturaModel
-import com.djcdev.practicas.domain.model.FacturasModel
+import com.djcdev.practicascompose.domain.model.FacturaModel
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class FacturasHtmlResponse(val numFacturas : Int, val facturas:List<FacturaHtmlResponse>){
-    fun toDomain(): FacturasModel {
-        return FacturasModel( numFacturas, facturas.map { it.toDomain() })
-    }
-}
+data class FacturasHtmlResponse(val numFacturas : Int, val facturas:List<FacturaHtmlResponse>)
 @Serializable
 data class FacturaHtmlResponse (
     val descEstado:String,

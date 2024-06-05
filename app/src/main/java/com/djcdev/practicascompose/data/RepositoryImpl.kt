@@ -1,14 +1,14 @@
-package com.djcdev.practicas.data
+package com.djcdev.practicascompose.data
 
 import android.util.Log
-import com.djcdev.practicas.data.database.FacturasDataBase
 import com.djcdev.practicas.data.database.entities.FacturaEntity
-import com.djcdev.practicas.data.network.ApiService
-import com.djcdev.practicas.data.network.MockService
-import com.djcdev.practicas.data.network.response.FacturasHtmlResponse
-import com.djcdev.practicas.domain.Repository
-import com.djcdev.practicas.domain.model.DetailModel
-import com.djcdev.practicas.domain.model.FacturaModel
+import com.djcdev.practicascompose.domain.Repository
+import com.djcdev.practicascompose.domain.model.DetailModel
+import com.djcdev.practicascompose.domain.model.FacturaModel
+import com.djcdev.practicascompose.data.database.FacturasDataBase
+import com.djcdev.practicascompose.data.network.ApiService
+import com.djcdev.practicascompose.data.network.MockService
+import com.djcdev.practicascompose.data.network.response.FacturasHtmlResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.url
@@ -21,7 +21,7 @@ class RepositoryImpl @Inject constructor(
     private val facturasDataBase: FacturasDataBase,
     private val mockService: MockService,
     private val ktor: HttpClient
-) :Repository{
+) : Repository {
     override suspend fun getFacturasFromApi(): List<FacturaModel>? {
         kotlin.runCatching {
             apiService.getFacturas()

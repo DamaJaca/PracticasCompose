@@ -1,10 +1,10 @@
-package com.djcdev.practicas.data.network
+package com.djcdev.practicascompose.data.network
 
 import android.app.Application
 import co.infinum.retromock.Retromock
-import com.djcdev.practicas.data.RepositoryImpl
-import com.djcdev.practicas.data.database.FacturasDataBase
-import com.djcdev.practicas.domain.Repository
+import com.djcdev.practicascompose.data.RepositoryImpl
+import com.djcdev.practicascompose.domain.Repository
+import com.djcdev.practicascompose.data.database.FacturasDataBase
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -50,7 +50,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit):ApiService{
+    fun provideApiService(retrofit: Retrofit): ApiService {
         return retrofit.create(ApiService::class.java)
     }
 
@@ -73,7 +73,7 @@ object NetworkModule {
 
 
     @Provides
-    fun provideRepository (apiService: ApiService, db: FacturasDataBase, mockService: MockService, ktor:HttpClient):Repository{
+    fun provideRepository (apiService: ApiService, db: FacturasDataBase, mockService: MockService, ktor:HttpClient): Repository {
         return RepositoryImpl(apiService, db, mockService, ktor)
     }
 
@@ -90,7 +90,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideMockService(retromock: Retromock):MockService{
+    fun provideMockService(retromock: Retromock): MockService {
         return retromock.create(MockService::class.java)
     }
 

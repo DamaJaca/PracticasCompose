@@ -1,9 +1,9 @@
-package com.djcdev.practicas.data.network
+package com.djcdev.practicascompose.data.network
 
 import co.infinum.retromock.meta.Mock
 import co.infinum.retromock.meta.MockResponse
-import com.djcdev.practicas.data.network.response.DetailsResponse
-import com.djcdev.practicas.data.network.response.FacturasResponse
+import com.djcdev.practicascompose.data.network.response.DetailsResponse
+import com.djcdev.practicascompose.data.network.response.FacturasResponse
 import retrofit2.http.GET
 
 interface MockService {

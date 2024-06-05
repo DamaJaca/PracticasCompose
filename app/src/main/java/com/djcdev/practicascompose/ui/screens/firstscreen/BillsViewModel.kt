@@ -1,7 +1,7 @@
 package com.djcdev.practicascompose.ui.screens.firstscreen
 
 import androidx.lifecycle.ViewModel
-import com.djcdev.practicas.domain.model.FacturaModel
+import com.djcdev.practicascompose.domain.model.FacturaModel
 import com.djcdev.practicas.domain.usecase.FilterFacturasUseCase
 import com.djcdev.practicas.domain.usecase.GetFacturasUseCase
 import com.djcdev.practicascompose.MainActivity.Companion.DEFAULT_DATE

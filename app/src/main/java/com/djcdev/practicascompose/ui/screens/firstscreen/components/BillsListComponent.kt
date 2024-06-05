@@ -25,7 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.djcdev.practicas.domain.model.FacturaModel
+import com.djcdev.practicascompose.domain.model.FacturaModel
 import com.djcdev.practicascompose.R
 
 
@@ -39,7 +39,7 @@ fun BillsList(list : List<FacturaModel>, modifier: Modifier=Modifier){
 }
 
 @Composable
-fun ItemBill(factura:FacturaModel){
+fun ItemBill(factura: FacturaModel){
     var showDialog by remember {
         mutableStateOf(false)
     }

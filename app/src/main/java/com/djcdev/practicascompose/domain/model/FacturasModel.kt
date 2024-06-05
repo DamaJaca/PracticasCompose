@@ -1,4 +1,4 @@
-package com.djcdev.practicas.domain.model
+package com.djcdev.practicascompose.domain.model
 
 import com.djcdev.practicas.data.database.entities.FacturaEntity
 import javax.inject.Inject

@@ -1,10 +1,8 @@
-package com.djcdev.practicas.data.network.response
+package com.djcdev.practicascompose.data.network.response
 
-import com.djcdev.practicas.domain.model.FacturaModel
-import com.djcdev.practicas.domain.model.FacturasModel
+import com.djcdev.practicascompose.domain.model.FacturaModel
+import com.djcdev.practicascompose.domain.model.FacturasModel
 import com.google.gson.annotations.SerializedName
-import kotlinx.serialization.Serializable
-
 
 
 data class FacturasResponse(@SerializedName("numFacturas") val numFacturas : Int, @SerializedName("facturas") val facturas:List<FacturaResponse>)
@@ -20,7 +18,7 @@ data class FacturaResponse (
     @SerializedName("fecha") val fecha:String
 )
 {
-    fun toDomain():FacturaModel{
+    fun toDomain(): FacturaModel {
         return FacturaModel(estado,importe,fecha)
     }
 }

@@ -1,4 +1,4 @@
-package com.djcdev.practicas.data.database
+package com.djcdev.practicascompose.data.database
 
 import android.content.Context
 import androidx.room.Room
@@ -21,5 +21,5 @@ object RoomModule {
 
     @Singleton
     @Provides
-    fun provideFacturaDao (db:FacturasDataBase) = db.getFacturasDao()
+    fun provideFacturaDao (db: FacturasDataBase) = db.getFacturasDao()
 }

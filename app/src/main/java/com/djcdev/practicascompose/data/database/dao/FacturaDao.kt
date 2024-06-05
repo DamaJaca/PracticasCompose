@@ -1,4 +1,4 @@
-package com.djcdev.practicas.data.database.dao
+package com.djcdev.practicascompose.data.database.dao
 
 import androidx.room.Dao
 import androidx.room.Insert

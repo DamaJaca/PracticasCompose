@@ -1,4 +1,4 @@
-package com.djcdev.practicas.domain.model
+package com.djcdev.practicascompose.domain.model
 
 data class DetailModel(
     val cau : String?,

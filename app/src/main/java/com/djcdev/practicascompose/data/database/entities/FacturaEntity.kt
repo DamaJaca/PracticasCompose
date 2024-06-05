@@ -3,7 +3,7 @@ package com.djcdev.practicas.data.database.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.djcdev.practicas.domain.model.FacturaModel
+import com.djcdev.practicascompose.domain.model.FacturaModel
 
 
 @Entity(tableName= "factura_table")
@@ -15,7 +15,7 @@ data class FacturaEntity (
     @ColumnInfo("fecha") val fecha:String
 )
 {
-    fun toDomain():FacturaModel{
+    fun toDomain(): FacturaModel {
         return FacturaModel(estado,importe,fecha)
     }
 }
