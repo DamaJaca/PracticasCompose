@@ -2,8 +2,8 @@ package com.djcdev.practicascompose.ui.screens.firstscreen
 
 import androidx.lifecycle.ViewModel
 import com.djcdev.practicascompose.domain.model.FacturaModel
-import com.djcdev.practicas.domain.usecase.FilterFacturasUseCase
-import com.djcdev.practicas.domain.usecase.GetFacturasUseCase
+import com.djcdev.practicascompose.domain.usecase.FilterFacturasUseCase
+import com.djcdev.practicascompose.domain.usecase.GetFacturasUseCase
 import com.djcdev.practicascompose.MainActivity.Companion.DEFAULT_DATE
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import dagger.hilt.android.lifecycle.HiltViewModel

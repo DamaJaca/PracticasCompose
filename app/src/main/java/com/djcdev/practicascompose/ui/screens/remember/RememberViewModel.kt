@@ -1,7 +1,7 @@
 package com.djcdev.practicascompose.ui.screens.remember
 
 import androidx.lifecycle.ViewModel
-import com.djcdev.practicas.domain.usecase.RememberUserUseCase
+import com.djcdev.practicascompose.domain.usecase.RememberUserUseCase
 import com.djcdev.practicascompose.domain.model.exceptions.FailedLogin
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,7 +1,7 @@
 package com.djcdev.practicascompose.ui.screens.signup
 
 import androidx.lifecycle.ViewModel
-import com.djcdev.practicas.domain.usecase.SingUpUseCase
+import com.djcdev.practicascompose.domain.usecase.SingUpUseCase
 import com.djcdev.practicascompose.domain.model.exceptions.FailedSignUp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

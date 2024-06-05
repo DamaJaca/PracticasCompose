@@ -1,7 +1,7 @@
 package com.djcdev.practicascompose.ui.screens.secondscreen
 
 import androidx.lifecycle.ViewModel
-import com.djcdev.practicas.domain.usecase.GetDetailsUseCase
+import com.djcdev.practicascompose.domain.usecase.GetDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

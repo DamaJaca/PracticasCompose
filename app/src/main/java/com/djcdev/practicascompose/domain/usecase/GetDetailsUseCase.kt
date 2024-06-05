@@ -1,4 +1,4 @@
-package com.djcdev.practicas.domain.usecase
+package com.djcdev.practicascompose.domain.usecase
 
 import com.djcdev.practicascompose.domain.Repository
 import com.djcdev.practicascompose.domain.model.DetailModel

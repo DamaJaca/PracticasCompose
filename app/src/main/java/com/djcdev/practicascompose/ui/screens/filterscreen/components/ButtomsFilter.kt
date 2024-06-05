@@ -20,7 +20,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.djcdev.practicascompose.R
-import com.djcdev.practicascompose.ui.navigation.PracticeOne
 import com.djcdev.practicascompose.ui.screens.firstscreen.BillsViewModel
 
 @Composable
@@ -34,7 +33,7 @@ fun ButtomsFilter(navController: NavController, modifier: Modifier = Modifier, v
             onClick = {
                 viewModel.changeIsFiltered(true)
                 viewModel.filterFacturas()
-                navController.navigate(PracticeOne)
+                navController.navigateUp()
             },
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.primary

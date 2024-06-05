@@ -1,4 +1,4 @@
-package com.djcdev.practicas.domain.usecase
+package com.djcdev.practicascompose.domain.usecase
 
 import com.djcdev.practicascompose.domain.Repository
 import com.djcdev.practicascompose.domain.model.FacturaModel
@@ -58,7 +58,7 @@ class FilterFacturasUseCase @Inject constructor (private val repository: Reposit
         //Ahora, ultimo filtrado por fecha
         if (fechaInicio != null && fechaFin != null) {
             //Si no se ha hecho ningun filtro previo:
-            if (pagada == false && pendientePago == false && importeMax == 0.0) {
+            if (pagada == false && pendientePago == false && importeMax == null) {
                 facturas.map {if (compararFechas(it.fecha, fechaFin)<=0 &&
                     compararFechas(it.fecha, fechaInicio)>=0
                 ) {
@@ -79,8 +79,7 @@ class FilterFacturasUseCase @Inject constructor (private val repository: Reposit
             }
         }
 
-        return if (importeMax==0.0 && fechaFin ==null
-            && fechaInicio==null && pagada ==false && pendientePago==false){
+        return if (importeMax==null && fechaFin ==null && fechaInicio==null && pagada ==false && pendientePago==false){
             facturas
         } else{
             facturasFinal
@@ -92,7 +91,7 @@ class FilterFacturasUseCase @Inject constructor (private val repository: Reposit
     }
 
 
-    fun compararFechas(fecha1: String, fecha2: String): Int {
+    private fun compararFechas(fecha1: String, fecha2: String): Int {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
 
