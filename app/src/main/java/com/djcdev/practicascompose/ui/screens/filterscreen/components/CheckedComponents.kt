@@ -11,14 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.screens.firstscreen.BillsViewModel
 
 @Composable
@@ -36,11 +35,11 @@ fun CheckedComponents (viewModel :BillsViewModel = hiltViewModel()){
         .fillMaxWidth(),
         horizontalAlignment = Alignment.Start
     ) {
-        NewCheckBox("Pagada", isPaid){viewModel.changeIsPaid(it)}
-        NewCheckBox("Anuladas", isNulled){viewModel.changeIsNulled(it)}
-        NewCheckBox("Cuota Fija", isFixed){viewModel.changeIsFixed(it)}
-        NewCheckBox("Pendiente de pago", isPending){viewModel.changeIsPending(it)}
-        NewCheckBox("Plan de Pago", isPlanned){viewModel.changeIsPlanned(it)}
+        NewCheckBox(stringResource(id = R.string.paid), isPaid){viewModel.changeIsPaid(it)}
+        NewCheckBox(stringResource(id = R.string.nulled), isNulled){viewModel.changeIsNulled(it)}
+        NewCheckBox(stringResource(id = R.string.fixed), isFixed){viewModel.changeIsFixed(it)}
+        NewCheckBox(stringResource(id = R.string.pending), isPending){viewModel.changeIsPending(it)}
+        NewCheckBox(stringResource(id = R.string.plan), isPlanned){viewModel.changeIsPlanned(it)}
     }
 }
 

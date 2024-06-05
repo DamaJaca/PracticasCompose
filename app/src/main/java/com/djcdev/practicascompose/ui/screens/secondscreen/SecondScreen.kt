@@ -20,7 +20,6 @@ import androidx.navigation.NavController
 import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.TopBarNoAction
-import com.djcdev.practicascompose.ui.navigation.Home
 import com.djcdev.practicascompose.ui.screens.secondscreen.components.TabContent1
 import com.djcdev.practicascompose.ui.screens.secondscreen.components.TabContent2
 import com.djcdev.practicascompose.ui.screens.secondscreen.components.TabContent3
@@ -29,9 +28,7 @@ import com.djcdev.practicascompose.ui.screens.secondscreen.components.TabContent
 fun SecondScreen(navController: NavController) {
     ComposeStructure(topAppBar = {
         TopBarNoAction(name = stringResource(id = R.string.smart_solar)) {
-            navController.navigate(
-                Home
-            )
+            navController.navigateUp()
         }
     },
         statusBar = true,

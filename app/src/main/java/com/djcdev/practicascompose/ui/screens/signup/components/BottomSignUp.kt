@@ -23,14 +23,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.domain.model.exceptions.FailedSignUp
 import com.djcdev.practicascompose.ui.companioncomposables.loginregister.RelativeLayoutComponent
 import com.djcdev.practicascompose.ui.companioncomposables.loginregister.ShowErrorRegisterMessage
 import com.djcdev.practicascompose.ui.navigation.Home
-import com.djcdev.practicascompose.ui.navigation.Login
 import com.djcdev.practicascompose.ui.screens.signup.SignUpViewModel
 
 @Composable
@@ -65,7 +66,7 @@ fun BottomSignUp(navController: NavController, modifier: Modifier = Modifier) {
     ) {
         if (signedUp) Toast.makeText(
             context,
-            "Se ha realizado el registro con exito",
+            stringResource(id = R.string.new_user_success),
             Toast.LENGTH_SHORT
         ).show()
         Button(
@@ -103,7 +104,7 @@ fun BottomSignUp(navController: NavController, modifier: Modifier = Modifier) {
                     color = Color.White
                 )
             } else {
-                Text("Registrarse")
+                Text(stringResource(id = R.string.singup))
             }
         }
 
@@ -119,7 +120,7 @@ fun BottomSignUp(navController: NavController, modifier: Modifier = Modifier) {
 
         OutlinedButton(
             onClick = {
-                navController.navigate(Login)
+                navController.navigateUp()
             },
             border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
             modifier = Modifier
@@ -130,7 +131,7 @@ fun BottomSignUp(navController: NavController, modifier: Modifier = Modifier) {
             )
         ) {
             Text(
-                text = "Volver a Inicio",
+                text = stringResource(id = R.string.back_to_login),
                 color = MaterialTheme.colorScheme.primary
             )
         }

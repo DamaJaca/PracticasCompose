@@ -17,6 +17,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -47,7 +48,7 @@ fun ContentSignUp() {
         OutlinedTextField(
             value = email,
             onValueChange = { viewModel.setEmail(it) },
-            label = { Text("Usuario") },
+            label = { Text(stringResource(id = R.string.user)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done)
@@ -57,7 +58,7 @@ fun ContentSignUp() {
         OutlinedTextField(
             value = password,
             onValueChange = {viewModel.setPassword(it)},
-            label = { Text("Contraseña") },
+            label = { Text(stringResource(id = R.string.password)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
@@ -67,7 +68,7 @@ fun ContentSignUp() {
                 IconButton(onClick = { viewModel.changeVisibilityPass() }) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_eye),
-                        contentDescription = "Contrasña"
+                        contentDescription = stringResource(id = R.string.password)
                     )
                 }
             }
@@ -77,7 +78,7 @@ fun ContentSignUp() {
         OutlinedTextField(
             value = confirmPass,
             onValueChange = { viewModel.setConfirmPassword(it) },
-            label = { Text("Repita la contraseña") },
+            label = { Text(stringResource(id = R.string.pass_confirm)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             visualTransformation = if (confirmPassVisible) VisualTransformation.None else PasswordVisualTransformation(),
@@ -87,7 +88,7 @@ fun ContentSignUp() {
                 IconButton(onClick = { viewModel.changeConfirmVisibilityPass() }) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_eye),
-                        contentDescription = "Contrasña"
+                        contentDescription = stringResource(id = R.string.pass_confirm)
                     )
                 }
             }

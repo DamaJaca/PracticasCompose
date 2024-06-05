@@ -12,7 +12,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.screens.firstscreen.BillsViewModel
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
@@ -22,20 +24,21 @@ import java.util.Locale
 @Composable
 fun RangeSliderComponent(viewModel: BillsViewModel) {
     val maxImport by viewModel.maxImport.collectAsState()
+    val billsMaxImport by viewModel.billsMaxImport.collectAsState()
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = "Facturas entre 0€ y ${doubleToFloat(maxImport)}€")
+        Text(text = stringResource(id = R.string.info_slider, doubleToFloat(maxImport).toString()))
 
         Spacer(modifier = Modifier.height(16.dp))
 
         Slider(
             value = maxImport.toFloat(),
             onValueChange = { viewModel.setMaxImport(it.toDouble())},
-            valueRange = 0f..viewModel.billsMaxImport.value
+            valueRange = 0f..  billsMaxImport
         )
     }
 }

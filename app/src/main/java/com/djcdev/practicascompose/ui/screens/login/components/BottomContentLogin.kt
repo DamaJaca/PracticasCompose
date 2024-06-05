@@ -23,9 +23,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.domain.model.exceptions.FailedLogin
 import com.djcdev.practicascompose.ui.companioncomposables.loginregister.RelativeLayoutComponent
 import com.djcdev.practicascompose.ui.companioncomposables.loginregister.ShowErrorMessage
@@ -68,7 +70,7 @@ fun BottomContentLogin(navController: NavController, modifier: Modifier = Modifi
 
         if (logged) Toast.makeText(
             LocalContext.current,
-            "Se ha iniciado sesion",
+            stringResource(id = R.string.success_login),
             Toast.LENGTH_SHORT
         ).show()
         Button(
@@ -117,7 +119,7 @@ fun BottomContentLogin(navController: NavController, modifier: Modifier = Modifi
                     color = Color.White
                 )
             } else {
-                Text("Acceder")
+                Text(stringResource(id = R.string.login))
             }
         }
 
@@ -141,7 +143,7 @@ fun BottomContentLogin(navController: NavController, modifier: Modifier = Modifi
                 .fillMaxWidth()
         ) {
             Text(
-                text = "Registrarse",
+                text = stringResource(id = R.string.singup),
                 color = MaterialTheme.colorScheme.primary
             )
         }

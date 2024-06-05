@@ -20,20 +20,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.TopBarAction
 import com.djcdev.practicascompose.ui.navigation.FilterBills
-import com.djcdev.practicascompose.ui.navigation.Home
 import com.djcdev.practicascompose.ui.screens.firstscreen.components.BillsList
 
 
 @Composable
 fun BillsScreen(navController: NavController, viewModel :BillsViewModel = hiltViewModel()) {
-
 
     val isLoading by viewModel.isBillsLoading.collectAsState()
     val error by viewModel.errorInNet.collectAsState()
@@ -47,8 +47,8 @@ fun BillsScreen(navController: NavController, viewModel :BillsViewModel = hiltVi
 
     ComposeStructure(
         topAppBar = {
-            TopBarAction(name = "Facturas",
-                toBackButton = { navController.navigate(Home) },
+            TopBarAction(name = stringResource(id = R.string.facturas),
+                toBackButton = { navController.navigateUp() },
                 toActionButton = { if (!isLoading)navController.navigate(FilterBills) })
         }, statusBar = true,
         contentApp = {
@@ -59,7 +59,7 @@ fun BillsScreen(navController: NavController, viewModel :BillsViewModel = hiltVi
                         .padding(horizontal = 16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "Mock", color = MaterialTheme.colorScheme.primary)
+                    Text(text = stringResource(id = R.string.mock), color = MaterialTheme.colorScheme.primary)
                     Spacer(modifier = Modifier.weight(1f))
                     Switch(
                         checked = mock,
@@ -98,7 +98,7 @@ fun BillsScreen(navController: NavController, viewModel :BillsViewModel = hiltVi
                             modifier = Modifier.fillMaxSize(),
                             contentAlignment = Alignment.Center
                         ) {
-                            val msg = if (error)"Ha ocurrido un problema al cargar" else "No se han encontrado facturas con esas especificaciones"
+                            val msg = if (error)stringResource(id = R.string.error_loading_list) else stringResource(id = R.string.empty_list)
                             Text(text = msg, modifier = Modifier.padding(horizontal = 16.dp))
                         }
                     }

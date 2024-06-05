@@ -24,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -54,7 +55,7 @@ fun MediumContentLogin(navController: NavController) {
         OutlinedTextField(
             value = username,
             onValueChange = { viewModel.setEmail(it) },
-            label = { Text("Usuario") },
+            label = { Text(stringResource(id = R.string.user)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
@@ -65,7 +66,7 @@ fun MediumContentLogin(navController: NavController) {
         OutlinedTextField(
             value = password,
             onValueChange = { viewModel.setPassword(it) },
-            label = { Text("Contraseña") },
+            label = { Text(stringResource(id = R.string.password)) },
             singleLine = true,
             modifier = Modifier.fillMaxWidth(),
             visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
@@ -75,7 +76,7 @@ fun MediumContentLogin(navController: NavController) {
                 IconButton(onClick = { viewModel.changeVisibilityPass() }) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_eye),
-                        contentDescription = "Contrasña"
+                        contentDescription = stringResource(id = R.string.password)
                     )
                 }
             }
@@ -92,7 +93,7 @@ fun MediumContentLogin(navController: NavController) {
                 contentColor = GreenDark
             )
         ) {
-            Text("He olvidado mi contraseña")
+            Text(stringResource(id = R.string.forgotten_info))
         }
         Row(
             modifier = Modifier
@@ -108,7 +109,7 @@ fun MediumContentLogin(navController: NavController) {
                     checkmarkColor = Color.White
                 )
             )
-            Text("Recordar Usuario y contraseña")
+            Text(stringResource(id = R.string.remember_pass))
         }
 
     }

@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -34,7 +33,6 @@ import com.djcdev.practicascompose.MainActivity.Companion.URL_DESTINO
 import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.TopBarNoAction
-import com.djcdev.practicascompose.ui.navigation.Home
 import com.djcdev.practicascompose.ui.screens.thirdscreen.components.WebViewComponent
 
 
@@ -50,11 +48,11 @@ fun ThirdScreen(navController: NavController= NavController(LocalContext.current
     }
 
     ComposeStructure(topAppBar = { TopBarNoAction(name = "Navegación") {
-        navController.navigate(Home)
+        navController.navigateUp()
     } }, statusBar = true,
         contentApp = {
             Column (modifier = Modifier.padding(36.dp)) {
-                Text(text= stringResource(id = R.string.desde_una_aplicaci_n_android_se_pude_acceder_a_p_ginas_webs_mediante_el_nave_gador_externo_o_mediante_webviews))
+                Text(text= stringResource(id = R.string.info_navigation))
                 Row(modifier= Modifier.padding(vertical = 16.dp),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically

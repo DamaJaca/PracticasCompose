@@ -4,20 +4,17 @@ import androidx.lifecycle.ViewModel
 import com.djcdev.practicas.domain.model.FacturaModel
 import com.djcdev.practicas.domain.usecase.FilterFacturasUseCase
 import com.djcdev.practicas.domain.usecase.GetFacturasUseCase
+import com.djcdev.practicascompose.MainActivity.Companion.DEFAULT_DATE
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.Date
 import java.util.Locale
 import javax.inject.Inject
-import kotlin.math.max
 
 
 @HiltViewModel
@@ -104,24 +101,24 @@ class BillsViewModel @Inject constructor(
 
 
 
-    private var _initialDate = MutableStateFlow("dd/mm/yyyy")
+    private var _initialDate = MutableStateFlow(DEFAULT_DATE)
     val initialDate get() = _initialDate
     fun setInitialDate(date:String){
         _initialDate.value=date
-        if(_finalDate.value== "dd/mm/yyyy"&& date!= "dd/mm/yyyy"){
-            _finalDate.value= SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(
+        if(_finalDate.value== DEFAULT_DATE && date!= DEFAULT_DATE){
+            _finalDate.value= SimpleDateFormat(DEFAULT_DATE, Locale.getDefault()).format(
                 Date()
             )
         }
     }
 
 
-    private var _finalDate = MutableStateFlow("dd/mm/yyyy")
+    private var _finalDate = MutableStateFlow(DEFAULT_DATE)
     val finalDate get() = _finalDate
 
     fun setFinalDate(date:String){
         _finalDate.value= date
-        if (_initialDate.value=="dd/mm/yyyy"){ _initialDate.value=date }
+        if (_initialDate.value==DEFAULT_DATE){ _initialDate.value=date }
     }
 
 
@@ -178,7 +175,7 @@ class BillsViewModel @Inject constructor(
         }
 
         CoroutineScope(Dispatchers.IO).launch{
-            val result: List<FacturaModel> = if (initialDate.value!= "dd/mm/yyyy" && finalDate.value!= "dd/mm/yyyy"){
+            val result: List<FacturaModel> = if (initialDate.value!= DEFAULT_DATE && finalDate.value!= DEFAULT_DATE){
                  filterFacturasUseCase.invoke(isPendingChecked.value, isPaidCheked.value, importe, initialDate.value,finalDate.value,isMockCheked.value)
             }
             else{

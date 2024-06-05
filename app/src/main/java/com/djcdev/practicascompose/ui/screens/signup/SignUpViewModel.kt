@@ -1,10 +1,7 @@
 package com.djcdev.practicascompose.ui.screens.signup
 
 import androidx.lifecycle.ViewModel
-import com.djcdev.practicas.domain.usecase.LoginUseCase
-import com.djcdev.practicas.domain.usecase.RememberUserUseCase
 import com.djcdev.practicas.domain.usecase.SingUpUseCase
-import com.djcdev.practicascompose.domain.model.exceptions.FailedLogin
 import com.djcdev.practicascompose.domain.model.exceptions.FailedSignUp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,12 +16,6 @@ class SignUpViewModel @Inject constructor(
     val email get () = _email
     fun setEmail(email:String){
         _email.value=email
-    }
-
-    private val _userName = MutableStateFlow("")
-    val userName get () = _userName
-    fun setUserName(email:String){
-        _userName.value=email
     }
 
 

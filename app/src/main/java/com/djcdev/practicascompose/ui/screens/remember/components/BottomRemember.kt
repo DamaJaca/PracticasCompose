@@ -23,9 +23,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.domain.model.exceptions.FailedLogin
 import com.djcdev.practicascompose.ui.companioncomposables.loginregister.RelativeLayoutComponent
 import com.djcdev.practicascompose.ui.navigation.Login
@@ -35,8 +37,6 @@ import com.djcdev.practicascompose.ui.screens.remember.RememberViewModel
 fun BottomRemember(navController: NavController, modifier: Modifier = Modifier) {
 
     val viewModel: RememberViewModel = hiltViewModel()
-
-    val context = LocalContext.current
 
     val isLoading by viewModel.isLoading.collectAsState()
     val email by viewModel.email.collectAsState()
@@ -56,7 +56,7 @@ fun BottomRemember(navController: NavController, modifier: Modifier = Modifier) 
     ) {
         if (logged) Toast.makeText(
             LocalContext.current,
-            "Se ha enviado el correo de recuperacion",
+            stringResource(id = R.string.send_recuperation_email),
             Toast.LENGTH_SHORT
         ).show()
         Button(
@@ -92,7 +92,7 @@ fun BottomRemember(navController: NavController, modifier: Modifier = Modifier) 
                         .background(Color.Transparent)
                 )
             } else {
-                Text("Enviar Correo")
+                Text(stringResource(id = R.string.recuperation_email))
             }
         }
 
@@ -101,7 +101,7 @@ fun BottomRemember(navController: NavController, modifier: Modifier = Modifier) 
 
         OutlinedButton(
             onClick = {
-                navController.navigate(Login)
+                navController.navigateUp()
             },
             border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
             modifier = Modifier
@@ -112,7 +112,7 @@ fun BottomRemember(navController: NavController, modifier: Modifier = Modifier) 
             )
         ) {
             Text(
-                text = "Volver a Inicio",
+                text = stringResource(id = R.string.back_to_login),
                 color = MaterialTheme.colorScheme.primary
             )
         }

@@ -6,7 +6,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.djcdev.practicascompose.R
-import com.djcdev.practicascompose.domain.model.exceptions.FailedLogin
 
 @Composable
 fun AlertDialogBills(onDimiss: () ->Unit){

@@ -4,6 +4,8 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.domain.model.exceptions.FailedSignUp
 
 @Composable
@@ -12,16 +14,16 @@ fun ShowErrorRegisterMessage(fail: FailedSignUp?, onDimiss: () -> Unit) {
     AlertDialog(
         onDismissRequest = { onDimiss() },
         title = {
-            Text(text = "Error!")
+            Text(text = stringResource(id = R.string.error_dialog_title))
         },
         text = {
             Text(
                 text = when (fail) {
-                    FailedSignUp.InvalidCredential -> "El email introducido no es válido. Comprueba que es un email válido"
-                    FailedSignUp.UserAlreadyExist -> "El usuario que intenta introducir ya está registrado"
-                    FailedSignUp.WeakPas -> "La contraseña es demasiado debil"
-                    FailedSignUp.NotSamePass -> "Las contraseñas no coinciden o los campos estan vacios"
-                    null -> "Ha ocurrido un error inesperado al intentar realizar esa acción"
+                    FailedSignUp.InvalidCredential -> stringResource(id = R.string.no_valid_email)
+                    FailedSignUp.UserAlreadyExist -> stringResource(id = R.string.user_already_exist)
+                    FailedSignUp.WeakPas -> stringResource(id = R.string.weak_pass)
+                    FailedSignUp.NotSamePass -> stringResource(id = R.string.not_same_pass)
+                    null -> stringResource(id = R.string.unknown_error)
                 }
             )
         },
@@ -30,7 +32,7 @@ fun ShowErrorRegisterMessage(fail: FailedSignUp?, onDimiss: () -> Unit) {
                 onClick = {
                     onDimiss()
                 }) {
-                Text("OK")
+                Text(stringResource(id = R.string.ok))
             }
         }
     )

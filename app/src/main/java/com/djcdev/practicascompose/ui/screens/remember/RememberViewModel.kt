@@ -1,11 +1,8 @@
 package com.djcdev.practicascompose.ui.screens.remember
 
 import androidx.lifecycle.ViewModel
-import com.djcdev.practicas.domain.usecase.LoginUseCase
 import com.djcdev.practicas.domain.usecase.RememberUserUseCase
-import com.djcdev.practicas.domain.usecase.SingUpUseCase
 import com.djcdev.practicascompose.domain.model.exceptions.FailedLogin
-import com.djcdev.practicascompose.domain.model.exceptions.FailedSignUp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
@@ -17,9 +14,6 @@ class RememberViewModel @Inject constructor(
 
     private val _email = MutableStateFlow("")
     val email get () = _email
-    fun setEmail(email:String){
-        _email.value=email
-    }
 
 
 

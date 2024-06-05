@@ -11,9 +11,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ExitToApp
-import androidx.compose.material3.Divider
+import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -60,43 +61,43 @@ private fun ContentHome(
 
         ) {
             Text(
-                text = "Practicas Android",
+                text = stringResource(id = R.string.practicasAndroid),
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier
                     .padding(bottom = 16.dp)
             )
 
             PracticeItem(
-                text = "Practica 1",
+                text = stringResource(id = R.string.practicas_practica1),
                 imageRes = R.drawable.ic_next
             ) { navController.navigate(PracticeOne) }
 
-            Divider(
-                color = Color.Gray,
+            HorizontalDivider(
+                modifier = Modifier.padding(vertical = 8.dp),
                 thickness = 2.dp,
-                modifier = Modifier.padding(vertical = 8.dp)
+                color = Color.Gray
             )
 
             PracticeItem(
-                text = "Practica 2",
+                text = stringResource(id = R.string.practicas_practica2),
                 imageRes = R.drawable.ic_next
             ) { navController.navigate(PracticeTwo) }
 
-            Divider(
-                color = Color.Gray,
+            HorizontalDivider(
+                modifier = Modifier.padding(vertical = 8.dp),
                 thickness = 2.dp,
-                modifier = Modifier.padding(vertical = 8.dp)
+                color = Color.Gray
             )
 
             PracticeItem(
-                text = "Practica 3",
+                text = stringResource(id = R.string.practicas_practica3),
                 imageRes = R.drawable.ic_next
             ) { navController.navigate(PracticeThree) }
         }
 
         FloatingActionButton(
             onClick = {
-                Toast.makeText(context, "Se ha cerrardo sesion correctamente", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, context.getString(R.string.suscces_log_out), Toast.LENGTH_SHORT).show()
                 runBlocking { saveUser("","",context) }
                 navController.navigate(Login)
                       },
@@ -104,7 +105,7 @@ private fun ContentHome(
                 .align(Alignment.BottomEnd)
                 .padding(16.dp)
         ) {
-            Icon(imageVector = Icons.Default.ExitToApp, contentDescription = "Cerrar Sesion")
+            Icon(imageVector = Icons.AutoMirrored.Filled.ExitToApp, contentDescription = stringResource(id = R.string.close))
         }
     }
 }

@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.djcdev.practicascompose.R
 
@@ -14,7 +15,7 @@ import com.djcdev.practicascompose.R
 fun HeadderIconIberdrola() {
     Image(
         painter = painterResource(id = R.drawable.ic_logo_iberdrola),
-        contentDescription = "Logo de iberdrola",
+        contentDescription = stringResource(id = R.string.logo_iberdrola),
         modifier = Modifier
             .width(200.dp)
             .height(80.dp)

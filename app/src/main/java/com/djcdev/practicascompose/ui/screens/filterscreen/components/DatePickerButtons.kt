@@ -21,8 +21,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.screens.firstscreen.BillsViewModel
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -45,7 +47,7 @@ fun DatePickerButtons(viewModel: BillsViewModel = hiltViewModel()){
         horizontalArrangement = Arrangement.SpaceEvenly
         ) {
         Column (horizontalAlignment = Alignment.CenterHorizontally){
-            Text(text = "Fecha de Inicio")
+            Text(text = stringResource(id = R.string.from_date))
             Button(
                 onClick = { viewModel.setShowInitialDatePickerDialog(true) },
                 border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
@@ -60,7 +62,7 @@ fun DatePickerButtons(viewModel: BillsViewModel = hiltViewModel()){
             }
         }
         Column (horizontalAlignment = Alignment.CenterHorizontally){
-            Text(text = "Fecha de fin")
+            Text(text = stringResource(id = R.string.to_date))
             Button(
                 onClick = { viewModel.setShowFinalDatePickerDialog(true) },
                 border = BorderStroke(2.dp, MaterialTheme.colorScheme.primary),
@@ -89,13 +91,13 @@ fun DatePickerButtons(viewModel: BillsViewModel = hiltViewModel()){
                         viewModel.setShowInitialDatePickerDialog(false)
                     }
                 }){
-                    Text(text = "Aceptar", color = MaterialTheme.colorScheme.primary)
+                    Text(text = stringResource(id = R.string.ok), color = MaterialTheme.colorScheme.primary)
                 }
 
             },
             dismissButton = {
                 TextButton(onClick = { viewModel.setShowInitialDatePickerDialog(false) }) {
-                    Text("Cancel")
+                    Text(stringResource(id = R.string.cancel))
                 }
             }
         ){
@@ -116,13 +118,13 @@ fun DatePickerButtons(viewModel: BillsViewModel = hiltViewModel()){
                         viewModel.setShowFinalDatePickerDialog(false)
                     }
                 }){
-                    Text(text = "Aceptar", color = MaterialTheme.colorScheme.primary)
+                    Text(text = stringResource(id = R.string.ok), color = MaterialTheme.colorScheme.primary)
                 }
 
             },
             dismissButton = {
                 TextButton(onClick = { viewModel.setShowFinalDatePickerDialog(false) }) {
-                    Text("Cancel")
+                    Text(stringResource(id = R.string.cancel))
                 }
             }
         ){

@@ -16,9 +16,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,14 +41,14 @@ fun TabContent1(){
         val appendedText = buildAnnotatedString {
             withStyle(style = SpanStyle(color = colorResource(id = R.color.practice_light_grey) )
             ){
-                append("Autoconsumo: ")
+                append(stringResource(id = R.string.auto_consumo))
             }
             withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)
             ){
-                append("92%")
+                append(stringResource(id = R.string.percentil_tool))
             }
         }
-        Text("Aquí tienes los datos de tu instalación fotovoltaica en tiempo real",
+        Text(stringResource(id = R.string.real_time_string_give),
             modifier= Modifier.padding(bottom = 16.dp)
         )
         Text(appendedText,
