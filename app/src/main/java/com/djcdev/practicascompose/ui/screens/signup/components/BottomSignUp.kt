@@ -79,7 +79,9 @@ fun BottomSignUp(navController: NavController, modifier: Modifier = Modifier) {
                                 signedUp = true
 
                             }
-                            navController.navigateUp()
+                            navController.navigate(Login) {
+                                popUpTo(Login) { inclusive = true }
+                            }
                         } else {
                             failedLog = fail
                             showDialog = true

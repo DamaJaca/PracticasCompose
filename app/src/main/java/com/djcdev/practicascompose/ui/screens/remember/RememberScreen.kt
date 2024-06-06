@@ -1,5 +1,6 @@
 package com.djcdev.practicascompose.ui.screens.remember
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,6 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import com.djcdev.practicascompose.R
 import com.djcdev.practicascompose.ui.companioncomposables.ComposeStructure
 import com.djcdev.practicascompose.ui.companioncomposables.HeadderIconIberdrola
+import com.djcdev.practicascompose.ui.navigation.Login
 import com.djcdev.practicascompose.ui.screens.remember.components.BottomRemember
 
 @Composable
@@ -48,6 +50,11 @@ fun RememberScreen(navController: NavController){
             }
         }
 
+    })
+    BackHandler(onBack = {
+        navController.navigate(Login) {
+            popUpTo(Login) { inclusive = true }
+        }
     })
 }
 
