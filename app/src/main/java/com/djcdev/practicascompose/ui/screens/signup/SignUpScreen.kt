@@ -1,7 +1,6 @@
 package com.djcdev.practicascompose.ui.screens.signup
 
 import android.util.Log
-import androidx.activity.OnBackPressedDispatcher
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
